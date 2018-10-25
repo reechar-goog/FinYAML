@@ -34,7 +34,7 @@ func main() {
 	}
 	fileContents := string(inputFileData)
 	fileContents = "\"" + strings.Replace(fileContents, "\n", "\\n", -1) + "\""
-	result := string(runes[0:start]) + fileContents
+	result := string(runes[0:start]) + fileContents + string(runes[end+2:])
 
 	err = ioutil.WriteFile(*outputFile, []byte(result), 0644)
 	if err != nil {
