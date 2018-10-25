@@ -23,7 +23,9 @@ func main() {
 	start := strings.Index(inputString, "{{")
 	end := strings.Index(inputString, "}}")
 	runes := []rune(inputString)
-
+	if start < 0 || end < 0 {
+		log.Fatalf("ERROR: Could not find {{ }} in file. Check input file: %v", templateFile)
+	}
 	fileName := string(runes[start+3 : end-1])
 
 	inputFileData, err := ioutil.ReadFile(fileName)
